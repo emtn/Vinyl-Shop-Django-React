@@ -12,6 +12,7 @@ function StoreScreen() {
     const [price , priceValue]       = useState("0")
     const [rating , ratingValue]       = useState("")
     const [products , setProducts]   = useState([]) //empty array
+    const [autoCompleteProducts , setAutoCompleteProducts]  = useState([])
     const [filters , setFilters]   = useState([])
 
     const [text ,setText] = useState([])
@@ -21,40 +22,33 @@ function StoreScreen() {
     const foundUser = JSON.parse(loggedUser);
   
 
-    const sendSuggestion = () => {
-        // console.log(text)
-        // const {data} = await axios.get(`api/filters/?price__lte=${price}&category=${category}&rating__lte=${rating}`)
-        //     setProducts(data)
-      
+    const sendSuggestion = async() => {
+        const {data} = await axios.get(`api/filters/title/${text}`)
+        setProducts([data])   
     }
     
     const onSuggestHandler = (text) => {
         setText(text)
-        setSuggestions([])
-      
+        setSuggestions([])  
     }
 
     const onChangeHandler = (text) => {
         var matches = []
         if (text.length > 0) {
-            matches = products.filter(product =>{
+            matches = autoCompleteProducts.filter(product =>{
                 const regex = new RegExp(`${text}` , "gi")
                 return product.title.match(regex)
             })
-        }
-        // console.log('matches' , matches)
-        
+        } 
         setText(text)
         setSuggestions(matches)
         
     }
-    // console.log(text)
    
-
 
     useEffect(() => {  
         async function getfilters() { 
-            const {data} = await axios.get('/api/filters/categories/') 
+            const {data} = await axios.get('/api/filters/categories/' ) 
             setFilters(data)
         }
         getfilters()
@@ -66,6 +60,7 @@ function StoreScreen() {
         async function fetchProducts(){ 
             const {data} = await axios.get('/api/vinyls/') 
             setProducts(data)
+            setAutoCompleteProducts(data)
         }
         fetchProducts()
        
