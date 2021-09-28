@@ -7,7 +7,6 @@ urlpatterns = [
     path('add-vinyl/', views.addVinyl, name='add-vinyl'),
     path('edid-vinyl/<str:pk>/', views.editVinyl, name='edid-vinyl'),
     path('delete-vinyl/<str:pk>/', views.deleteVinyl, name='delete-vinyl'),
-    path('title/<str:title>/', views.getVinylByTitle, name='vinyl-by-title'),
     path('<str:pk>/reviews/', views.createVinylReview, name='create-review'),
     path('<str:pk>/', views.getVinyl, name='vinyl'),
 
