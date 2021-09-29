@@ -29,21 +29,22 @@ function ShippingScreen() {
     if (loggedUser){
 
     return (
-        <Container style={{ paddingTop:"5rem" ,
+        
+            <Row className="justify-content-md-center"  style={{ paddingTop:"5rem" ,
                             paddingBottom:"5rem" ,
                             paddingLeft:"0rem" ,
                             paddingRight:"0rem" ,
-                            textAlign:"center"
+                            textAlign:"center",
+                            backgroundColor: "rgba(0, 0, 0, 0.28)",
                         }}>
-            <Row className="justify-content-md-center">
             <Col xs={12} md={6}>
             {/* <CheckoutSteps step1 step2 /> */}
             <h1>Shipping</h1>
-            <Form onSubmit={submitHandler}>
+            <Form onSubmit={submitHandler}  style = {{ paddingTop: "1%", padding: "2%", }}>
 
-                <Form.Group controlId='address'>
+                <Form.Group controlId='address' style = {{ padding: "1%", }}>
                     <Form.Label>Address</Form.Label>
-                    <Form.Control
+                    <Form.Control style = {{ fontSize: "15px", }}
                         required
                         type='text'
                         placeholder='Enter address'
@@ -53,9 +54,9 @@ function ShippingScreen() {
                     </Form.Control>
                 </Form.Group>
 
-                <Form.Group controlId='city'>
+                <Form.Group controlId='city' style = {{ padding: "1%", }}>
                     <Form.Label>City</Form.Label>
-                    <Form.Control
+                    <Form.Control style = {{ fontSize: "15px", }}
                         required
                         type='text'
                         placeholder='Enter city'
@@ -65,9 +66,9 @@ function ShippingScreen() {
                     </Form.Control>
                 </Form.Group>
 
-                <Form.Group controlId='postalCode'>
+                <Form.Group controlId='postalCode' style = {{ padding: "1%", }}>
                     <Form.Label>Postal Code</Form.Label>
-                    <Form.Control
+                    <Form.Control style = {{ fontSize: "15px", }}
                         required
                         type='text'
                         placeholder='Enter postal code'
@@ -77,9 +78,9 @@ function ShippingScreen() {
                     </Form.Control>
                 </Form.Group>
 
-                <Form.Group controlId='country'>
+                <Form.Group controlId='country' style = {{ padding: "1%", }}>
                     <Form.Label>Country</Form.Label>
-                    <Form.Control
+                    <Form.Control style = {{ fontSize: "15px", }}
                         required
                         type='text'
                         placeholder='Enter country'
@@ -89,13 +90,23 @@ function ShippingScreen() {
                     </Form.Control>
                 </Form.Group>
 
-                <Button type='submit' variant='primary'>
-                    Continue
-                </Button>
+                <Button className="submitButton3" type="submit" style={{
+                                                                            margin: "0px",
+                                                                            marginTop: "30px",
+                                                                            paddding: "15px",
+                                                                            marginLeft: "0%",
+                                                                            width: "120px",
+                                                                            height: "50px",
+                                                                            fontSize: "15px",
+                                                                            borderRadius: "5px",
+                                                                          }}
+                        variant="primary" type="submit" >
+                        Update
+                    </Button>
             </Form>
             </Col>
             </Row>
-        </Container>
+       
     )
 }
 }

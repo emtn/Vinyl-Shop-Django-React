@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Row, Col, Image, Card , Button , Figure , Form , Table} from 'react-bootstrap'
+import { Container, Row, Col, Image, Card , Button , Figure , Form , Table,} from 'react-bootstrap'
 import axios from 'axios'
 import {LinkContainer} from 'react-router-bootstrap'
 import { useHistory } from 'react-router-dom';
@@ -17,6 +17,7 @@ function ProfileScreen() {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [orders , setOrders] = useState([])
+    console.log(orders)
     const [user , setUser] = useState()
 
     const submitHandler = async (e) => {
@@ -37,12 +38,25 @@ function ProfileScreen() {
             
                 
             });
-            setUser(response.data);  
+            setUser(response.data);
+            
+            
             localStorage.setItem("user", JSON.stringify(response.data)); 
+            
             window.location.reload();  
         }      
     }
 
+
+    const ColoredLine = ({ color, height }) => (
+        <hr
+            style={{
+                color: color,
+                backgroundColor: color,
+                height: height
+            }}
+        />
+    );  
 
     useEffect(() => {
 
@@ -56,7 +70,7 @@ function ProfileScreen() {
             })
           
             setOrders(data) 
-            // console.log(data)
+            console.log(data)
         } 
         fetchOrders()
     } , []) //array at the end to prevent limitless loops
@@ -67,53 +81,74 @@ function ProfileScreen() {
 
     return (
     <>
-            <Row  style={{paddingLeft:"3rem"}}>
-                <h3>{foundUser.name}</h3>
+            
+        
+            
+            <Row  style = {{ backgroundColor: "DarkSeaGreen", }}>
+                
+                <Container style={{marginTop:"5rem", paddingLeft:"1%", paddingTop: "1%", borderBottom:"0px solid brown",}}>
+                    
+                    <h3 style= {{ fontSize: "25px", marginLeft: "9%", color: "black",  textAlign : "left",}}>Hello, {foundUser.name} !</h3>
+                    
+                    <ColoredLine color="black" height= "2px" />
+                    <ColoredLine color="black" height= "2px" />
+                
+                </Container>
             </Row>
-            <Row style={{paddingTop:"10rem" ,
+            
+            <Row style={{paddingTop:"5rem" ,
                         paddingBottom:"10rem" ,
-                        paddingLeft:"3rem" ,
+                        paddingLeft:"10%" ,
                         paddingRight:"3rem" ,
+                        backgroundColor: "DarkSeaGreen",
                     }}>
-                <Col md={3} xl={6} style={{width:"28%",
-                                        marginLeft:"10%",
-                                        marginRight:"5%",
+                <Col  style={{          width:"40%",
+                                        height : "530px",
+                                        marginLeft:"0%",
+                                        marginRight:"10%",
                                         border:"1px solid black",
                                         borderRadius:"1rem",
                                         boxShadow:" 0rem 0rem 1rem 0.2rem black",
                                         fontSize:"20px",
-                                        padding:"1rem"}}>
-                    <h2>User Profile</h2>
+                                        padding:"1rem",
+                                        backgroundColor: "white",
+                                        }}>
 
-                    <Form onSubmit={submitHandler}>
 
-                        <Form.Group controlId='fname'>
-                            <Form.Label>Name</Form.Label>
-                            <Form.Control
+
+
+
+                    <h2 style = {{ textAlign: "center" , paddingTop: "4%", color: "Brown",}}>Change Personal Info</h2>
+
+                    <Form onSubmit={submitHandler} style = {{ padding : "4%", }}>
+
+                        <Form.Group controlId='fname' style = {{ paddingTop : "2%", }}>
+                            <Form.Label >Name</Form.Label>
+                            <Form.Control style = {{ fontSize: "15px", }}
                                 required
                                 type='name'
-                                placeholder='Enter name'
+                                placeholder={foundUser.name}
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                             >
                         </Form.Control>
                         </Form.Group>
 
-                        <Form.Group controlId='email'>
-                            <Form.Label>Email Address</Form.Label>
-                            <Form.Control
+                        <Form.Group controlId='email' style = {{ paddingTop : "4%", }}>
+                            <Form.Label >Email Address</Form.Label>
+                            <Form.Control style = {{ fontSize: "15px", }}
                                 required
                                 type='email'
-                                placeholder='Enter Email'
+                                placeholder={foundUser.email}
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                             >
                             </Form.Control>
                         </Form.Group>
 
-                        <Form.Group controlId='password'>
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control
+                        <Form.Group controlId='password' style = {{ paddingTop : "4%", }}>
+                            <Form.Label >Password</Form.Label>
+                            <Form.Control style = {{ fontSize: "15px", }}
 
                                 type='password'
                                 placeholder='Enter Password'
@@ -122,10 +157,9 @@ function ProfileScreen() {
                             >
                             </Form.Control>
                         </Form.Group>
-
-                        <Form.Group controlId='passwordConfirm'>
-                            <Form.Label>Confirm Password</Form.Label>
-                            <Form.Control
+                        <Form.Group controlId='passwordConfirm' style = {{ paddingTop : "4%", }}>
+                            <Form.Label >Confirm Password</Form.Label>
+                            <Form.Control style = {{ fontSize: "15px", }}
 
                                 type='password'
                                 placeholder='Confirm Password'
@@ -134,33 +168,41 @@ function ProfileScreen() {
                             >
                             </Form.Control>
                         </Form.Group>
-
-                        <Button type='submit' variant='primary'>
-                            Update
+                        <Button className="submitButton3" type="submit" style={{
+                                                                            margin: "40px",
+                                                                            marginTop: "30px",
+                                                                            paddding: "15px",
+                                                                            marginLeft: "35%",
+                                                                            width: "120px",
+                                                                            height: "50px",
+                                                                            fontSize: "15px",
+                                                                            borderRadius: "5px",                                                                       }}
+                        variant="primary" type="submit" >
+                        Update
                     </Button>
-
                     </Form>
                 </Col>
-
                 <Col md={9} xl={6}  style={{marginRight:"5%",
-                                            fontSize:"20px",
-                                            padding:"1rem"}}>
-                    <h2>My Orders</h2>
-                
+                                            fontSize:"27px",
+                                            padding:"1rem",
+                                            paddingTop : "3%",
+                                            backgroundColor: "rgba(0, 0, 0, 0.4)",
+                                            color: "black",
+                                            borderRadius : "1%",
+                                            border:"1px solid black"}}>
+                    <h2 style = {{ fontSize: "19px", paddingTop: "2rem", color: "white", }} >{foundUser.name}'s Orders</h2>            
                         {/* <Message variant='danger'>Error</Message> */}
-    
-                    <Table striped responsive className='table-sm' >
+                    <Table responsive className='table-sm' style = {{ color: "black", textAlign:"center" ,border:"none"}}>
                         <thead >
-                            <tr>
-                                <th >ID</th>
-                                <th >Date</th>
-                                <th >Total</th>
-                                <th >Paid</th>
-                                <th >Delivered</th>
+                            <tr >
+                                <th style={{fontSize:"20px"}}>ID</th>
+                                <th style={{fontSize:"20px"}}>Date</th>
+                                <th style={{fontSize:"20px"}}>Total</th>
+                                <th style={{fontSize:"20px"}}>Paid</th>
+                                <th style={{fontSize:"20px"}}>Delivered</th>
                                 <th></th>
                             </tr>
                         </thead>
-
                         <tbody>
                             {orders.map(order => (
                                 <tr key={order.id}>
@@ -178,12 +220,10 @@ function ProfileScreen() {
                                 </tr>
                             ))} 
                         </tbody>
-                    </Table>
-                            
-                </Col>
-            </Row>
+                    </Table>                      
+                </Col>           
+            </Row>                            
         </>
-
 
     )
 }

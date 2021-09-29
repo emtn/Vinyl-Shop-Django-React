@@ -8,6 +8,10 @@ import {Container} from 'react-bootstrap'
 
 
 function Footer() {
+
+    function openExternalURL() {
+        window.open("https://github.com/christosno/group_project")
+          };
  
     function scrollToTop(){
         window.scrollTo({
@@ -59,7 +63,17 @@ function Footer() {
                             <div className="tooltip">
                                 Github
                             </div>
-                            <span><i className="fab fa-github"></i></span>
+                            <span style={{boxSizing:"border-box"}}>
+
+                                <button onClick={openExternalURL} style={{border:"none",
+                                                                         background: "transparent",
+                                                                         width:"100%",
+                                                                         display:"block",
+                                                                         padding:"1rem",
+                                                                            }}>
+                                    <i className="fab fa-github"></i>
+                                </button>
+                            </span>
                         </div>
                         <div className="icon youtube">
                             <div className="tooltip">

@@ -135,7 +135,7 @@ function PlaceOrderScreen() {
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Shipping:</Col>
-                                        13
+                                        0
                                     
                                 </Row>
                             </ListGroup.Item>
@@ -143,7 +143,7 @@ function PlaceOrderScreen() {
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Tax:</Col>
-                                     24%
+                                     0
                                     
                                 </Row>
                             </ListGroup.Item>
@@ -151,15 +151,15 @@ function PlaceOrderScreen() {
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Total:</Col>
-                                  {totalPrice() + (13 + (13 + totalPrice()) * 0.24)}
+                                  {totalPrice() + (0 + (0 + totalPrice()) * 0)}
                                 </Row>
                             </ListGroup.Item>
 
 
-                            <ListGroup.Item>
+                            {/* <ListGroup.Item>
                                 error
-                                {/* {error && <Message variant='danger'>{error}</Message>} */}
-                            </ListGroup.Item>
+                                {error && <Message variant='danger'>{error}</Message>}
+                            </ListGroup.Item> */}
 
                             <ListGroup.Item>
                                 {sdkReady ? (

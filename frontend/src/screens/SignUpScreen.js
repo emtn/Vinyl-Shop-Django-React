@@ -5,7 +5,7 @@ import { Container, Row, Col, Image, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 
-import image from "../about1.jpg";
+import image from "../images/about1.jpg";
 
 function SignUpScreen() {
     // const [first_name, setFirst_name] = useState("");
@@ -40,7 +40,8 @@ function SignUpScreen() {
         localStorage.setItem("allEntries", JSON.stringify([]));
         localStorage.setItem("ShippingAddress", JSON.stringify([]));
         localStorage.setItem("paymentMethod", JSON.stringify(''));
-
+      
+        
         history.push("/");
         window.location.reload();
     };
@@ -48,20 +49,25 @@ function SignUpScreen() {
 
     return (
 
+  
     <Row style={{height: "610px"}} >
-        <Col md={6} style={{backgroundColor: "orange"}}>
+        <Col md={6} style={{
+            backgroundColor: "orange",
+        }}>
             <Container>
-                <Container style={{margin: "3%",
-                                   paddingTop: "4%",
-                                   marginLeft: "41%",
-                                  }}>
+                <Container style={{
+                    margin: "3%",
+                    paddingTop: "4%",
+                    marginLeft: "41%",
+
+                }}>
                     <h3 style={{ paddingTop: "0rem", fontSize: "24px", fontWeight: "900", }}>Sign up </h3>
                 </Container>
                 <Form onSubmit={handleSubmit} style = {{ paddingTop: "0rem", color:"black", }}>
                     <Form.Group className="mb-2" controlId="formBasicName" >
                         <Form.Label style={{ fontSize: "18px", }} column="lg"  > Name </Form.Label>
                         <Col xs={10} >
-                            <Form.Control style={{ borderRadius: "5px", }} type="name" placeholder="Name" 
+                            <Form.Control style={{ borderRadius: "5px", fontSize: "15px",}} type="name" placeholder="Name" 
                             value={name}
                             onChange={({ target }) => setUsername(target.value)}/>
                         </Col>
@@ -69,7 +75,7 @@ function SignUpScreen() {
                     <Form.Group className="mb-2" controlId="formBasicEmail">
                         <Form.Label style={{ fontSize: "18px", }} column="lg" >Email address</Form.Label>
                         <Col xs={8} >
-                            <Form.Control style={{ borderRadius: "5px", }} type="email" placeholder="Enter email" value={email}
+                            <Form.Control style={{ borderRadius: "5px", fontSize: "15px",}} type="email" placeholder="Enter email" value={email}
                         onChange={({ target }) => setEmail(target.value)}/>
                         </Col>
                         <Form.Text className="text-muted">
@@ -78,7 +84,7 @@ function SignUpScreen() {
                     <Form.Group className="mb-2" controlId="formBasicPassword">
                         <Form.Label style={{ fontSize: "18px", }} column="lg"  >Password</Form.Label>
                         <Col xs={12} >
-                            <Form.Control style={{ borderRadius: "5px", }} type="password" placeholder="Password" value= {password}
+                            <Form.Control style={{ borderRadius: "5px", fontSize: "15px",}} type="password" placeholder="Password" value= {password}
                         onChange={({ target }) => setPassword(target.value)}/>
                         </Col>
                     </Form.Group>
@@ -107,7 +113,11 @@ function SignUpScreen() {
                 </Container>
             </Container>
         </Col>
-        <Col style={{backgroundImage: `url(${image})`,}}></Col>
+        <Col style={{
+
+         backgroundImage: `url(${image})`,
+        }}>
+        </Col>
     </Row>
 
     );

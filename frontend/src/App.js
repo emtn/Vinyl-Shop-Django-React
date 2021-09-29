@@ -6,7 +6,7 @@ import Chat from './components/Chat';
 import ProfileScreen from './screens/ProfileScreen';
 import ProductScreen from './screens/ProductScreen';  
 import StoreScreen from './screens/StoreScreen';
-import MarketplaceScreen from './screens/MarketplaceScreen';
+
 import ContactScreen from './screens/ContactScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import LoginScreen from './screens/LoginScreen';
@@ -16,7 +16,11 @@ import ShippingScreen from './screens/ShippingScreen';
 import PaymentScreen from './screens/PaymentScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
 
-
+import AdminUsers from './screens/AdminUsers';
+import AdminVynils from './screens/AdminVynils';
+import AdminVinylsEdit from './screens/AdminVinylsEdit';
+import AdminVynilsAdd from './screens/AdminVinylsAdd';
+import AdminHome from './screens/AdminHome';
 
 
 function App() {
@@ -32,7 +36,7 @@ function App() {
             <Route path='/profile' exact component={ProfileScreen} />
             <Route path='/store/:id' component={ProductScreen} />
             <Route path='/store' exact component={StoreScreen} />
-            <Route path='/marketplace' exact component={MarketplaceScreen} />
+           
             <Route path='/contact' exact component={ContactScreen} />
             <Route path='/signup' exact component={SignUpScreen} />
             <Route path='/login' exact component={LoginScreen} />
@@ -40,7 +44,14 @@ function App() {
             <Route path='/shipping' exact component={ShippingScreen} />
             <Route path='/paymentscreen' exact component={PaymentScreen} />
             <Route path='/placeorder' exact component={PlaceOrderScreen} />
-            {/* <Route path='/chat' exact component={Chat} /> */}
+
+            <Route path='/admin/home' exact component={AdminHome} />
+            <Route path='/admin/vinyls' exact component={AdminVynils} />
+            <Route path='/admin/vinyls/add' exact component={AdminVynilsAdd} />
+            <Route path='/admin/vinyls/edit' exact component={AdminVinylsEdit} />
+            <Route path='/admin/users' exact component={AdminUsers} />
+           
+            
 
        
       

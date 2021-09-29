@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Row, Col, Image ,Card , Button} from 'react-bootstrap'
 import {LinkContainer}  from 'react-router-bootstrap'
-import about from '../about3.jpg';
+import about from '../images/about3.jpg';
 
 function AboutUs() {
 

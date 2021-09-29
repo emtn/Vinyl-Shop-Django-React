@@ -141,6 +141,7 @@ function ProductScreen({match}) {  //props.match.params.id
                         </Card>
                     </Col>
                 </Row>
+                {foundUser ?
                 <Container fluid style={{marginTop:"3rem" ,
                                          marginBottom:"3rem",
                                          backgroundColor:"whitesmoke"}}>   
@@ -185,6 +186,16 @@ function ProductScreen({match}) {  //props.match.params.id
                         </Button>
                     </Form>
                 </Container>
+                :
+                <Container fluid style={{marginTop:"10rem" ,
+                marginBottom:"3rem",
+                backgroundColor:"whitesmoke"}}>
+                    <Col style={{fontSize:"20px",
+                                textAlign:"left",
+                                width:"40%",
+                                marginLeft:"10rem"}}>LOG IN TO WRITE YOUR REVIEW</Col>
+                </Container> 
+                }
                 <Container fluid>
                     <Col xl={3} style={{fontSize:"18px",
                                         textAlign:"left",

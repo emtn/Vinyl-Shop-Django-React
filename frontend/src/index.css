@@ -360,7 +360,7 @@ footer{
   background-position: right;
  }
 
-/*Chatroom*/
+/* Chatroom*/
 p,ol,ul,li{
 	margin:0;
 	padding:0;
@@ -467,7 +467,11 @@ ol,ul{list-style:none}
 	width: 100%;
 	height: 60px;
 	line-height: 60px;
-	background: #f9f9f9;
+	background:orange;
+  position: absolute;
+  padding-top: 2rem;
+  left: 0;
+  top:0;
 }
 .wrapper2 .head-img img {
 	width: 40px;
@@ -477,7 +481,49 @@ ol,ul{list-style:none}
 }
 .wrapper2 .head-img p {
 	float: left;
-}  
+}   
+
+.msg {
+  display: flex;
+  padding: 20px 10px 0 20px;
+  margin: 10px;
+  border-radius: 3000px;
+  box-shadow: 0 0 10px rgb(164, 164, 164);
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.sent {
+  background-color: #395dff;
+  color: white;
+  border-top-right-radius: 1000px;
+  flex-direction: row-reverse;
+  padding: 20px 20px 0 10px;
+  text-align: end;
+  float: right;
+}
+
+.received {
+  border: 1px solid lightgray;
+  background-color: #FAFAFA;
+  border-top-left-radius: 1000px;
+  float: left;
+}
+
+.sendMsg {
+  position: fixed;
+  display: flex;
+  width: 100%;
+  bottom: 0;
+  z-index: 1;
+  border-top: 1px solid lightgray;
+  margin-left: -5px;
+  padding: 10px;
+  padding-bottom: 30px;
+  background-color: #fafafa;
+}
+
 
 /*Search bar*/
 .form-control:focus {
@@ -529,3 +575,19 @@ ol,ul{list-style:none}
   opacity: 1;
   transform: scale(1,1);
 }
+
+
+/* Profile button*/
+ .submitButton3 {
+  background:linear-gradient(75deg ,#F72633, #FC9F43  );
+  background-size: 400%;
+  background-position: left;
+  transition:"0.3s background-position ease-in-out";
+ }
+ .submitButton3:hover {
+
+  background-position: right;
+ }
+
+
+

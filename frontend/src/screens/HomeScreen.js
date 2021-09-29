@@ -5,7 +5,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import  ControlledCarousel from '../components/ControlledCarousel';  
 import AboutUs from '../components/AboutUs'; 
 
-import home3 from '../home3.jpg';
+import home3 from '../images/home3.jpg';
 
 
 

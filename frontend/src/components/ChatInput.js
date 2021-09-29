@@ -2,53 +2,49 @@ import React from "react";
 import { Container, Form, InputGroup , Button ,Col } from 'react-bootstrap'
 import { useState,UseEffect } from "react";
 import axios from "axios";
+import firebase from 'firebase'
+import { db ,auth} from "../firebase";
 
-function ChatInput(loggedUser) {
+function ChatInput() {
  
         const [msg , setMsg]= useState("");
 
-        const handleSubmit =  (e) => {
-            e.preventDefault();
-        
-        
-           
+        async function sendMessage(e){
+            e.preventDefault()
+            // const {uid , photoURL} = auth.currentUser
 
-      
-            axios.post('/api/chat/post/',{
-                    "message":msg
-                    },{
-                    "headers":{
-                        "Authorization":`Bearer ${loggedUser.user.token}`
-                    }
-                }
-                )
-            // document.getElementById('message-txt').val("");
-        };
-      
+            await db.collection('messages').add({
+                text : msg ,
+                // photoURL,
+                // uid,
+                createdAt : firebase.firestore.FieldValue.serverTimestamp()
+            })
+            setMsg("")
+           
+        }
+       
         return (
 
-        <>
             <Col className="msg-box">
                 <Col className="wrap">
-                    <Form>
-                        <Form.Control  onSubmit={handleSubmit}  style={{width:"90%"}}
+                    <Form onSubmit={sendMessage}>
+                        <Form.Control style={{ width: '80%', fontSize: '15px', fontWeight: '550' }}
                             id="message-txt"   
-                            placeholder="Enter your message..." 
+                            placeholder="Message..." 
                             value={msg}
-                            onChange={(e)=>setMsg(e.target.value)}>        
-                        </Form.Control>
-                    
-                        <Button className="submit" variant="danger" id="button-addon2" type='submit'
-                                style={{width:"10%"}}>
+                            onChange={({target})=> setMsg(target.value)}>        
+                        </Form.Control>    
+                        <Button className="button" variant="danger" id="button-addon2" type='submit'
+                                style={{width:"20%"}}>
                             <i className="fa fa-paper-plane" aria-hidden="true"></i>
                         </Button>
                     </Form>
-                    
                 </Col>
-            </Col>
-        </>
-
-
+            </Col> 
     )
 }
 export default ChatInput
+
+
+
+
